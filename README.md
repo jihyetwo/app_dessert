@@ -3,7 +3,8 @@
 > **저장된 프로덕트 기획서**: [`docs/PRODUCT_SPECIFICATIONS.md`](docs/PRODUCT_SPECIFICATIONS.md)  
 > **마케팅 소스 디렉터리**: `/Users/name/Desktop/Cluade/DESSERT`  
 > **배선 아웃풋 디렉터리**: `output/blog/`  
-> **웹 대시보드 (GitHub Pages)**: [https://jihyetwo.github.io/app_dessert/](https://jihyetwo.github.io/app_dessert/)
+> **Vercel 라이브 배포**: [https://app-dessert.vercel.app](https://app-dessert.vercel.app)  
+> **GitHub Pages**: [https://jihyetwo.github.io/app_dessert/](https://jihyetwo.github.io/app_dessert/)
 
 ---
 
