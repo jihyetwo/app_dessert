@@ -74,22 +74,24 @@ def build_app_board(meta, blog_md=""):
     body_lines.append(f"{topic}에 대한 영양 팩트체크 정보입니다.")
     body_lines.append("")
 
-    if meta["hypothesis"]:
+    if meta.get("hypothesis"):
         cleaned_hypo = remove_bold_formatting(remove_emojis(meta["hypothesis"]))
         body_lines.append(cleaned_hypo)
         body_lines.append("")
 
-    if "instagram" in meta["captions"] and meta["captions"]["instagram"]:
-        cleaned_cap = remove_bold_formatting(remove_emojis(meta["captions"]["instagram"]))
+    caption_text = meta.get("instagram_caption") or (meta.get("captions", {}).get("instagram", ""))
+    if caption_text:
+        cleaned_cap = remove_bold_formatting(remove_emojis(caption_text))
         for line in cleaned_cap.splitlines():
             line_s = line.strip()
             if not line_s.startswith("#") and "DM" not in line_s and "댓글" not in line_s:
                 body_lines.append(line_s)
         body_lines.append("")
 
-    if meta["rules"]:
+    rules = meta.get("rules", [])
+    if rules:
         body_lines.append("[핵심 실천 수칙]")
-        for r in meta["rules"]:
+        for r in rules:
             clean_r = remove_bold_formatting(remove_emojis(r))
             body_lines.append(f"□ {clean_r}")
         body_lines.append("")

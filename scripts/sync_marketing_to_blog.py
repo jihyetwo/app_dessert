@@ -28,6 +28,7 @@ REPO_OUTPUT = os.path.join(APP_ROOT, "output", "blog")
 sys.path.append(SCRIPT_DIR)
 from blog_generator import extract_metadata, build_naver_blog
 from app_board_generator import build_app_board
+from build_static_site import build_static_html
 
 def get_all_campaigns():
     """DESSERT 내의 모든 캠페인 폴더(트랙 A + 트랙 B) 스캔"""
@@ -139,6 +140,7 @@ def sync_all():
         else:
             print(f"  ⚠️  {c['folder_name']}: {msg}")
     print(f"\n🎉 완료: {success}/{len(campaigns)}개 캠페인 동기화 완료!")
+    build_static_html()
 
 def sync_by_name(name_query):
     campaigns = get_all_campaigns()
@@ -150,6 +152,7 @@ def sync_by_name(name_query):
         ok, msg = sync_single_campaign(c)
         status = "✅ 성공" if ok else "❌ 실패"
         print(f"{status}: {c['folder_name']} ({msg})")
+    build_static_html()
 
 def copy_to_clipboard(text):
     try:
